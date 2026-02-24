@@ -1,0 +1,145 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1771953472576-8
+      author: Daniel
+      changes:
+
+        # ======================
+        # MATERIAIS (INSUMOS)
+        # ======================
+
+        - insert:
+            tableName: material
+            columns:
+              - column: { name: id, value: "mat-1" }
+              - column: { name: code, value: "MAT001" }
+              - column: { name: name, value: "Farinha" }
+              - column: { name: stock_quantity, valueNumeric: 100 }
+
+        - insert:
+            tableName: material
+            columns:
+              - column: { name: id, value: "mat-2" }
+              - column: { name: code, value: "MAT002" }
+              - column: { name: name, value: "Açúcar" }
+              - column: { name: stock_quantity, valueNumeric: 80 }
+
+        - insert:
+            tableName: material
+            columns:
+              - column: { name: id, value: "mat-3" }
+              - column: { name: code, value: "MAT003" }
+              - column: { name: name, value: "Leite" }
+              - column: { name: stock_quantity, valueNumeric: 60 }
+
+        - insert:
+            tableName: material
+            columns:
+              - column: { name: id, value: "mat-4" }
+              - column: { name: code, value: "MAT004" }
+              - column: { name: name, value: "Chocolate" }
+              - column: { name: stock_quantity, valueNumeric: 40 }
+
+        # ======================
+        # PRODUTOS (8)
+        # ======================
+
+        - insert:
+            tableName: product
+            columns:
+              - column: { name: id, value: "prod-1" }
+              - column: { name: code, value: "PROD001" }
+              - column: { name: name, value: "Bolo de Chocolate" }
+              - column: { name: price, valueNumeric: 35.00 }
+
+        - insert:
+            tableName: product
+            columns:
+              - column: { name: id, value: "prod-2" }
+              - column: { name: code, value: "PROD002" }
+              - column: { name: name, value: "Bolo Simples" }
+              - column: { name: price, valueNumeric: 25.00 }
+
+        - insert:
+            tableName: product
+            columns:
+              - column: { name: id, value: "prod-3" }
+              - column: { name: code, value: "PROD003" }
+              - column: { name: name, value: "Pão Doce" }
+              - column: { name: price, valueNumeric: 5.00 }
+
+        - insert:
+            tableName: product
+            columns:
+              - column: { name: id, value: "prod-4" }
+              - column: { name: code, value: "PROD004" }
+              - column: { name: name, value: "Brownie" }
+              - column: { name: price, valueNumeric: 8.00 }
+
+        - insert:
+            tableName: product
+            columns:
+              - column: { name: id, value: "prod-5" }
+              - column: { name: code, value: "PROD005" }
+              - column: { name: name, value: "Cupcake" }
+              - column: { name: price, valueNumeric: 7.00 }
+
+        - insert:
+            tableName: product
+            columns:
+              - column: { name: id, value: "prod-6" }
+              - column: { name: code, value: "PROD006" }
+              - column: { name: name, value: "Torta de Chocolate" }
+              - column: { name: price, valueNumeric: 40.00 }
+
+        - insert:
+            tableName: product
+            columns:
+              - column: { name: id, value: "prod-7" }
+              - column: { name: code, value: "PROD007" }
+              - column: { name: name, value: "Torta Simples" }
+              - column: { name: price, valueNumeric: 30.00 }
+
+        - insert:
+            tableName: product
+            columns:
+              - column: { name: id, value: "prod-8" }
+              - column: { name: code, value: "PROD008" }
+              - column: { name: name, value: "Pão Integral" }
+              - column: { name: price, valueNumeric: 6.00 }
+
+        # ======================
+        # RELACIONAMENTO PRODUTO x MATERIAL
+        # ======================
+
+        - insert:
+            tableName: product_material
+            columns:
+              - column: { name: id, value: "pm-1" }
+              - column: { name: product_id, value: "prod-1" }
+              - column: { name: material_id, value: "mat-1" }
+              - column: { name: quantity_required, valueNumeric: 2 }
+
+        - insert:
+            tableName: product_material
+            columns:
+              - column: { name: id, value: "pm-2" }
+              - column: { name: product_id, value: "prod-1" }
+              - column: { name: material_id, value: "mat-4" }
+              - column: { name: quantity_required, valueNumeric: 1 }
+
+        - insert:
+            tableName: product_material
+            columns:
+              - column: { name: id, value: "pm-3" }
+              - column: { name: product_id, value: "prod-2" }
+              - column: { name: material_id, value: "mat-1" }
+              - column: { name: quantity_required, valueNumeric: 2 }
+
+        - insert:
+            tableName: product_material
+            columns:
+              - column: { name: id, value: "pm-4" }
+              - column: { name: product_id, value: "prod-2" }
+              - column: { name: material_id, value: "mat-2" }
+              - column: { name: quantity_required, valueNumeric: 1 }
