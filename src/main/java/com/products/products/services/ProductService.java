@@ -61,6 +61,20 @@ public class ProductService {
                 );
     }
 
+    @Transactional(readOnly = true)
+    public ProductResponseDTO getById(String id) {
+
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+
+        return new ProductResponseDTO(
+                product.getId(),
+                product.getCode(),
+                product.getName(),
+                product.getPrice()
+        );
+    }
+
     public List<ProductResponseDTO> getAllProducts(){
         return productRepository.findAll()
                 .stream()

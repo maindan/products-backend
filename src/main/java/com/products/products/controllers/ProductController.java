@@ -20,6 +20,11 @@ public class ProductController {
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductResponseDTO> getById(@PathVariable String id) {
+        return ResponseEntity.ok(productService.getById(id));
+    }
+
     @GetMapping("/with-materials")
     public ResponseEntity<List<ProductWithMaterialsResponseDTO>> getAllProductsWithMaterials() {
         return ResponseEntity.ok(productService.getAllProductsWithMaterials());
