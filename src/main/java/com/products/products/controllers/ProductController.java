@@ -1,14 +1,14 @@
 package com.products.products.controllers;
 
 import com.products.products.DTOs.ProductCreateRequestDTO;
+import com.products.products.DTOs.ProductResponseDTO;
 import com.products.products.models.Product;
 import com.products.products.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/products")
@@ -16,8 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
     private final ProductService productService;
 
+    @GetMapping
+    public ResponseEntity<List<ProductResponseDTO>> getAllProducts(){
+        return ResponseEntity.ok(productService.getAllProducts());
+    }
+
     @PostMapping
-    public ResponseEntity<Product> create(@RequestBody ProductCreateRequestDTO request) {
+    public ResponseEntity<ProductResponseDTO> create(@RequestBody ProductCreateRequestDTO request) {
         return ResponseEntity.ok(productService.create(request));
     }
 }
