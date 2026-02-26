@@ -11,5 +11,6 @@ public class ProductSuggestiontItemDTO {
     private String productId;
     private String productName;
     private Integer quantity;
+    private BigDecimal productValue;
     private BigDecimal totalValue;
 }

@@ -119,13 +119,9 @@ public class ProductService {
         Optional.ofNullable(request.getPrice()).ifPresent(product::setPrice);
 
         if (request.getMaterials() != null) {
-
             product.getMaterials().clear();
 
-            List<ProductMaterial> newMaterials = new ArrayList<>();
-
             for (ProductMaterialRequestDTO item : request.getMaterials()) {
-
                 Material material = materialRepository.findById(item.getMaterialId())
                         .orElseThrow(() -> new RuntimeException("Insumo não encontrado"));
 
@@ -134,20 +130,13 @@ public class ProductService {
                 productMaterial.setMaterial(material);
                 productMaterial.setQuantityRequired(item.getQuantityRequired());
 
-                newMaterials.add(productMaterial);
+                product.getMaterials().add(productMaterial);
             }
-
-            product.setMaterials(newMaterials);
         }
 
         productRepository.save(product);
 
-        return new ProductResponseDTO(
-                product.getId(),
-                product.getCode(),
-                product.getName(),
-                product.getPrice()
-        );
+        return toDTO(product);
     }
 
     @Transactional
@@ -222,6 +211,7 @@ public class ProductService {
                         product.getId(),
                         product.getName(),
                         maxProducible,
+                        product.getPrice(),
                         productTotal
                 ));
             }
@@ -230,6 +220,15 @@ public class ProductService {
         return new ProductSuggestionResponseDTO(
                 suggestions,
                 totalPrice
+        );
+    }
+
+    public ProductResponseDTO toDTO(Product product) {
+        return new ProductResponseDTO(
+                product.getId(),
+                product.getName(),
+                product.getCode(),
+                product.getPrice()
         );
     }
 }
