@@ -1,8 +1,4 @@
 databaseChangeLog:
-
-  - preConditions:
-    - runningAs:
-        username: postgres
   - include:
       file: db/changelog/2026/02/24-01-changelog.yaml
   - include:

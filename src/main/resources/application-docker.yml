@@ -8,11 +8,12 @@ spring:
       maximum-pool-size: 10
       initialization-fail-timeout: 0
 
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yml
+    test-rollback-on-update: false
+
   jpa:
     hibernate:
       ddl-auto: none
     show-sql: true
-
-  liquibase:
-    enabled: true
-    change-log: classpath:/db/changelog/db.changelog-master.yml
